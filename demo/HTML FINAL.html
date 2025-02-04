@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Information</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Font EB Garamond -->
+    <style>
+        
+        body {
+            font-family: 'EB Garamond', serif; 
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        header {
+            background-color: #333; 
+            padding: 10px 0;
+        }
+
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center; 
+        }
+
+        nav ul li {
+            display: inline-block; 
+            margin-right: 0; 
+        }
+
+        nav ul li a {
+            color: #fff; /* White text color */
+            text-decoration: none;
+            padding: 15px 20px; 
+            display: block; 
+            background-color: #555; 
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        nav ul li a.active {
+            background-color: #777; 
+        }
+
+        nav ul li a:hover {
+            background-color: #666; 
+        }
+
+        
+        .hero {
+            background-image: url('https://loukinenson4th.com/wp-content/uploads/2022/09/loukinens-on-fourth-blog-12-15-22-image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: black; 
+            position: relative; 
+        }
+        .hero-text {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(200, 200, 200, 0.5); 
+            padding: 20px;
+            border-radius: 10px;
+            color: black; 
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        .hero p {
+            font-size: 1.5em;
+            font-style: italic;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .info img, .info iframe {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .importance {
+            font-style: italic;
+            color: #666;
+        }
+        .vitamin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .vitamin-table th, .vitamin-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .vitamin-table th {
+            background-color: #f2f2f2;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Video list styles */
+        .video-list {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .video-list-item {
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+        }
+        .video-list-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .channel-icon {
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /* Styles FOR GI section */
+        #gi .container {
+            background-color: #f8f9fa; 
+            padding: 20px;
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            margin-top: 20px; 
+        }
+
+        #gi .section-title {
+            color: #dc3545; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+            text-align: center; /
+        }
+
+        #gi .info {
+            text-align: justify; 
+            margin-bottom: 20px; 
+        }
+
+        #gi .info h3 {
+            color: #333; 
+            text-transform: uppercase; 
+            font-size: 1.8em; 
+            margin-bottom: 15px; 
+            text-align: center; 
+        }
+
+        #gi .info p {
+            color: #333; 
+            line-height: 1.8; 
+            margin-bottom: 20px; 
+        }
+
+        #gi .info ul {
+            list-style-type: disc; 
+            padding-left: 20px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            text-align: left; 
+            line-height: 1.6; 
+        }
+
+        #gi .info li {
+            color: #555; 
+            margin-bottom: 10px; 
+            font-size: 1.1em; 
+        }
+
+        @media (max-width: 768px) {
+            #gi .info ul {
+                max-width: 100%; 
+            }
+        }
+
+        #gi .info .images {
+            display: flex;
+            gap: 20px;
+            justify-content: center; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+
+        #gi .info .images .chart-image,
+        #gi .info .images .food-example {
+            flex: 1 1 45%; 
+            max-width: 100%; 
+            text-align: center; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+
+        #gi .info .chart-explanation {
+            text-align: justify; 
+            line-height: 1.6; 
+            margin-bottom: 20px; 
+        }
+
+        #gi .info .chart-explanation h3 {
+            margin-top: 0; 
+        }
+
+        #gi .info .chart-explanation p {
+            margin-bottom: 10px; 
+        }
+
+        #gi .info .food-example img,
+        #gi .info .chart-image img {
+            width: 100%; 
+            display: block; 
+            margin: 0 auto; 
+            transition: transform 0.3s ease; 
+        }
+
+        #gi .info .food-example img:hover,
+        #gi .info .chart-image img:hover {
+            transform: scale(1.1); 
+        }
+#recipes {
+    background-color: #f5f5f5; 
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    margin-top: 20px; 
+}
+
+#recipes h2 {
+    color: #dc3545; /* Red color for section title */
+    text-transform: uppercase; /* Uppercase section title */
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+#recipes .video-list {
+    text-align: center; /* Center align videos */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#recipes .video-list-item {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+#recipes .video-list-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+#recipes .recipe-example {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+}
+
+#recipes .recipe-example h3 {
+    color: #333; /* Dark grey color for section title */
+    margin-bottom: 10px; 
+}
+
+#recipes .recipe-example p {
+    color: #555; /* Dark grey color for paragraphs */
+    line-height: 1.6; 
+    margin-bottom: 10px; 
+}
+
+#recipes .recipe-example ul {
+    list-style-type: disc; 
+    padding-left: 20px; 
+    max-width: 600px; 
+    margin: 0 auto; 
+    text-align: left; 
+    line-height: 1.6; 
+}
+
+#recipes .recipe-example ul li {
+    color: #555; /* Dark grey color for list items */
+    margin-bottom: 10px; 
+    font-size: 1.1em; 
+}
+
+@media (max-width: 768px) {
+    #recipes .recipe-example ul {
+        max-width: 100%; 
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" data-target="#calories">Food Calories</a></li>
+                <li><a href="#" data-target="#vitamins">Vitamins</a></li>
+                <li><a href="#" data-target="#gi">GI Value</a></li>
+                <li><a href="#" data-target="#recipes">Recipes</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Food nutrition and cooking</h1>
+                <p>Discover the secrets of nutrition</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="calories" class="section tab-content">
+        <div class="container">
+            <h2>Understanding Food Calories</h2>
+            <p class="definition">Calories are units of energy derived from the foods and beverages we consume. They are essential for powering our body's functions, from basic metabolic processes to physical activities.</p>
+            <p>Each type of nutrient provides a different number of calories per gram:</p>
+            <ul>
+                <li>Carbohydrates: 4 calories per gram</li>
+                <li>Proteins: 4 calories per gram</li>
+                <li>Fats: 9 calories per gram</li>
+                <li>Alcohol: 7 calories per gram</li>
+            </ul>
+            <p>It's important to balance calorie intake with physical activity to maintain a healthy weight and overall well-being.</p>
+            
+            <h3>Calculating Calories</h3>
+            <p>To determine the calorie content of a food or meal, you can use tools like the <a href="https://www.webmd.com/diet/healthtool-food-calorie-counter" target="_blank">Food Calories Calculator</a>. This helps in making informed decisions about your diet based on your daily caloric needs.</p>
+            
+            <div class="info">
+                <iframe src="https://www.youtube.com/embed/VEQaH4LruUo" frameborder="0" allowfullscreen width="100%"></iframe>
+            </div>
+            
+            <h3>Managing Caloric Intake</h3>
+            <p>To maintain a healthy weight:</p>
+            <ul>
+                <li>Choose nutrient-dense foods that are lower in calories but rich in vitamins, minerals, and fiber.</li>
+                <li>Avoid excessive consumption of empty-calorie foods high in added sugars and unhealthy fats.</li>
+                <li>Balance calorie intake with regular physical activity to support overall health and well-being.</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="vitamins" class="section tab-content">
+        <div class="container">
+            <h2>Vitamins and their importance</h2>
+            <p class="definition">Vitamins are essential nutrients that help your body grow and work properly. They play crucial roles in various bodily functions.</p>
+            <p class="importance">Vitamin A supports vision and a healthy immune system. Vitamin B complex aids metabolism and energy production. Vitamin C is crucial for collagen production and wound healing. Vitamin D helps regulate calcium and phosphorus levels in the body. Vitamin E acts as an antioxidant, protecting cells from damage. Vitamin B12 is essential for red blood cell formation, neurological function, and DNA synthesis.</p>
+            <table class="vitamin-table">
+                <caption>Vitamin-Rich Foods</caption>
+                <thead>
+                    <tr>
+                        <th>Vitamin</th>
+                        <th>Rich Food Sources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vitamin A</td>
+                        <td>Sweet potatoes, carrots, spinach, kale, apricots</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin B</td>
+                        <td>Whole grains, meat, fish, poultry, eggs, dairy products</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin C</td>
+                        <td>Citrus fruits (oranges, lemons), strawberries, bell peppers, broccoli</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin D</td>
+                        <td>Fatty fish (salmon, mackerel), fortified dairy products, sunlight</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin E</td>
+                        <td>Nuts (almonds, sunflower seeds), spinach, broccoli, vegetable oils</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamin B12</td>
+                        <td>Shellfish, liver, fish, meat, dairy products, fortified cereals</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="info">
+                <iframe src="https://www.youtube.com/embed/kXnMRyCjtFA" frameborder="0" allowfullscreen width="100%"></iframe>
+            </div>
+            <p>For more information about healthy eating and the benefits of vitamins and minerals, visit <a href="https://www.betterhealth.vic.gov.au/health/healthyliving/Vitamins-and-minerals" target="_blank">Better Health Victoria - Vitamins and Minerals</a>.</p>
+        </div>
+    </section>
+
+    <section id="gi" class="section tab-content">
+    <div class="container">
+        <h2 class="section-title">Glycaemic Index (GI) Value</h2>
+
+        
+        <div class="info">
+            <div class="images">
+                <div class="chart-image">
+                    <img src="https://cdn.shopify.com/s/files/1/0253/3641/4261/files/Glycemic-index-chart_1024x1024.jpg?v=1706210575" alt="GI Chart">
+                </div>
+                <div class="food-example">
+                    <img src="https://www.bionime.com/proimages/education/Glycemic-Foods-Chart(s).jpg" alt="High GI Foods">
+                </div>
+            </div>
+
+            <div class="chart-explanation">
+                <h3>Explanation of GI Values</h3>
+                <p>The GI chart categorizes foods based on their impact on blood glucose levels. Foods with a high GI (above 70) cause rapid spikes in blood sugar, while those with a low GI (below 55) lead to more gradual increases.</p>
+                <p>High GI Foods: White bread, sugary snacks<br>Low GI Foods: Whole grains, fruits</p>
+            </div>
+        </div>
+
+        <!-- Health Implications -->
+        <div class="info">
+            <h3>Health Implications</h3>
+            <p>Research suggests that a diet with a lower GI may significantly reduce the risk of developing type 2 diabetes and cardiovascular diseases, such as heart disease and stroke. This is because low GI foods help regulate blood sugar levels more effectively, reducing the strain on insulin production and promoting overall metabolic health.</p>
+            <p>In addition to lowering disease risks, adopting a low GI diet can aid in weight management. Low GI foods tend to provide longer-lasting feelings of fullness and satisfaction, which can reduce overall calorie intake and curb cravings for unhealthy snacks and sweets.</p>
+            <p>Furthermore, studies have shown that individuals following a low GI diet may experience improvements in insulin sensitivity. This means their bodies respond more efficiently to insulin, the hormone responsible for regulating blood sugar levels. Better insulin sensitivity is crucial for preventing and managing type 2 diabetes.</p>
+            <p>For people already diagnosed with diabetes, maintaining a diet rich in low GI foods can help achieve better blood glucose control. By avoiding foods that cause rapid spikes in blood sugar, individuals with diabetes can better manage their condition and reduce the risk of complications.</p>
+        </div>
+
+        <!-- Practical Tips -->
+        <div class="info">
+            <h3>Practical Tips</h3>
+            <ul>
+                <li>Replace refined grains with whole grains.</li>
+                <li>Choose fruits and vegetables instead of sugary snacks.</li>
+                <li>Combine foods with low GI with protein and healthy fats to further slow digestion.</li>
+                <li>Read food labels and choose products with a lower GI.</li>
+            </ul>
+        </div>
+
+        <!-- Research Insights -->
+        <div class="info">
+            <h3>Research Insights</h3>
+            <p>Research continues to highlight the benefits of a low GI diet across various health parameters. Beyond its impact on diabetes and weight management, studies suggest that adhering to a low GI diet may contribute to reducing the risk of certain cancers, such as colorectal cancer, and improve overall gut health.</p>
+            <p>Furthermore, ongoing research explores the potential benefits of low GI diets in promoting cognitive function and mental health. Some studies indicate that stable blood sugar levels, achieved through low GI foods, may support better cognitive performance and mood regulation.</p>
+            <p>As the understanding of GI and its implications expands, incorporating low GI foods into dietary guidelines can play a crucial role in public health strategies aimed at reducing chronic disease burden and improving quality of life.</p>
+            <p>For more detailed information and a comprehensive list of GI values, visit <a href="https://www.glycemicindex.com/" target="_blank">Glycemic Index Foundation</a>.</p>
+        </div>
+    </div>
+</section>
+
+    <section id="recipes" class="section tab-content">
+    <div class="container">
+        <h2>Recipes</h2>
+        <div class="video-list">
+            <div class="video-list-item">
+                <a href="https://www.youtube.com/watch?v=sJO7jn3OXQ8" target="_blank"><img src="https://img.youtube.com/vi/sJO7jn3OXQ8/mqdefault.jpg" alt="Breakfast Recipes Thumbnail"></a>
+                <p><a href="https://www.youtube.com/watch?v=sJO7jn3OXQ8" target="_blank">Breakfast Recipes</a></p>
+            </div>
+            <div class="video-list-item">
+                <a href="https://www.youtube.com/watch?v=OuY-zJy_fBw" target="_blank"><img src="https://img.youtube.com/vi/OuY-zJy_fBw/mqdefault.jpg" alt="Lunch Recipes Thumbnail"></a>
+                <p><a href="https://www.youtube.com/watch?v=OuY-zJy_fBw" target="_blank">Lunch Recipes</a></p>
+            </div>
+            <div class="video-list-item">
+                <a href="https://www.youtube.com/watch?v=G-YVRQ-di3w" target="_blank"><img src="https://img.youtube.com/vi/G-YVRQ-di3w/mqdefault.jpg" alt="Dinner Recipes Thumbnail"></a>
+                <p><a href="https://www.youtube.com/watch?v=G-YVRQ-di3w" target="_blank">Dinner Recipes</a></p>
+            </div>
+        </div>
+        <p>Discover healthy recipes in the <a href="https://healthyeating.nhlbi.nih.gov/pdfs/dinners_cookbook_508-compliant.pdf" target="_blank">Healthy Eating Cookbook</a>. Eating well is crucial for maintaining good health, providing essential nutrients that support bodily functions, promote growth, and repair tissues.</p>
+        
+        <!-- Recipe Example -->
+        <div class="recipe-example">
+            <h3>Recipe Example: Grilled Chicken Salad</h3>
+            <p>This refreshing salad combines grilled chicken with fresh vegetables and a tangy vinaigrette dressing, providing a balanced meal rich in proteins, vitamins, and minerals.</p>
+            <h4>Ingredients:</h4>
+            <ul>
+                <li>Grilled chicken breast</li>
+                <li>Mixed greens (lettuce, spinach)</li>
+                <li>Cucumbers, tomatoes, bell peppers</li>
+                <li>Red onion slices</li>
+                <li>Feta cheese</li>
+                <li>Olives</li>
+            </ul>
+            <h4>Instructions:</h4>
+            <ol>
+                <li>Grill the chicken until fully cooked.</li>
+                <li>Combine vegetables and cheese in a bowl.</li>
+                <li>Top with sliced chicken and drizzle with vinaigrette.</li>
+                <li>Serve and enjoy!</li>
+            </ol>
+        </div>
+
+        <p>Explore more recipes on <a href="https://www.youtube.com/@tastyrecipes" target="_blank"><img src="https://yt3.ggpht.com/ytc/AAUvwnhNcwOv9CISos1Ww21pWwH8QLkT1WEKLMmbLTgJ=s176-c-k-c0x00ffffff-no-rj" class="channel-icon"> Tasty Recipes channel</a>.</p>
+    </div>
+</section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('nav ul li a').click(function(e) {
+                e.preventDefault(); 
+
+               
+                $('nav ul li a').removeClass('active');
+
+               
+                $(this).addClass('active');
+
+                $('.tab-content').removeClass('active');
+
+            
+                var target = $(this).attr('data-target');
+                $(target).addClass('active');
+            });
+
+        
+        });
+    </script>
+</body>
+</html>
+
+
